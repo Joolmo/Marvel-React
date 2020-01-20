@@ -1,0 +1,11 @@
+#SplashContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e3031c;
+}
+
+html, body, #root, #SplashContainer {
+    height: 100%
+  }
+  

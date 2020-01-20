@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useEffect } from 'react'
+import './SplashScreen.css'
 
+const splashImage = require('./SplashImage.png')
 
 interface IProps {
     startAsync: () => Promise<void>
@@ -14,8 +16,8 @@ export default function SplashScreen({startAsync, onError, onFinish}: IProps) {
     }, [])
 
     return (
-        <div>
-            <p>Cargando...</p>
+        <div id="SplashContainer">
+            <img src={splashImage} alt="splashImage"/>
         </div>
     )
 }
