@@ -60,7 +60,7 @@ export default function CharacterScreen() {
                 titleLabel="NAME"
                 contentLabel="ID"
                 thumbnail={item.thumbnail}
-                navigationPath={`/${typeOfData == "character" ? "ComicDetail" : ""}/${item.id}`}
+                navigationPath={`/${typeOfData == "character" ? "CharacerDetail" : "ComicDetail"}/${item.id}`}
               />
             </div>
           ))}

@@ -3,7 +3,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const headerImage = require('../assets/marvelImage.png')
 
@@ -16,24 +16,25 @@ export default function HomeBottom({onChangeValue}: IProps) {
   const classes = useStyles();
   const [radioValue, setRadioValue] = useState("character")
 
+  useEffect(() => {
+    onChangeValue(radioValue)
+  }, [radioValue])
+
   return (
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-            <label className={`${classes.label} MuiToolbar-regular`}>
+            <label className={`${classes.label} MuiToolbar-regular ${radioValue=="character"? classes.selectedLabel : ""}`}>
               <input
                 type="radio"
                 name="typeOfData"
                 value="character"
                 className={classes.radio}
-                onChange={(event) => {
-                  setRadioValue(event.target.value)
-                  onChangeValue(event.target.value)
-                }}
+                onChange={ event => setRadioValue(event.target.value) }
               />
-              Characters
+              <p>Characters</p>
             </label>
 
-            <label className={`${classes.label} MuiToolbar-regular`}>
+            <label className={`${classes.label} MuiToolbar-regular ${radioValue=="comic"? classes.selectedLabel : ""}`}>
               <input
                 type="radio"
                 name="typeOfData"
@@ -44,7 +45,7 @@ export default function HomeBottom({onChangeValue}: IProps) {
                   onChangeValue(event.target.value)
                 }}
               />
-              Comics
+              <p>Comics</p>
             </label>
         </Toolbar>
       </AppBar>
@@ -56,6 +57,10 @@ const useStyles = makeStyles(theme => ({
     width:"50%",
     height:"100%",
     textAlign:"center"
+  },
+  selectedLabel: {
+    color:"black",
+    backgroundColor: "white"
   },
   radio: {
     appearance: "none"

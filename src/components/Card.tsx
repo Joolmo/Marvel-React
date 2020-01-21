@@ -18,15 +18,15 @@ interface IProps {
     id: number
     contentLabel: string
     titleLabel: string
-    fullWidth?: boolean
     navigationPath: string
+    fullWidth?: boolean
 }
 
 export default function RecipeReviewCard({thumbnail, title, titleLabel, id, contentLabel, navigationPath, fullWidth = false}: IProps) {
   const classes = useStyles();
 
   return (
-    <Link to={navigationPath}>
+    <Link to={navigationPath} style={{textDecoration: "none"}}>
       <Card className={fullWidth ? classes.fullCard : classes.card}>
         <CardMedia
           className={classes.media}
@@ -45,7 +45,6 @@ export default function RecipeReviewCard({thumbnail, title, titleLabel, id, cont
         </CardActions>
       </Card>
     </Link>
-
   );
 }
 
@@ -53,9 +52,7 @@ const useStyles = makeStyles(theme => ({
     card: {
       maxWidth: 700,
     },
-    fullCard: {
-      maxWidth: 700,
-    },
+    fullCard: {},
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9

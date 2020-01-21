@@ -4,8 +4,6 @@ import { SplashScreen } from './screens'
 import AppNavigation from './navigation/AppNavigation'
 import './App.css';
 
-const logo = require('./logo.svg');
-
 
 export default function App() {
   const [isLoadingComplete, setLoadingComplete] = useState(false);

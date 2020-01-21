@@ -1,5 +1,6 @@
 import HomeScreen from './HomeScreen/HomeScreen'
 import SplashScreen from './SplashScreen/SplashScreen'
-import DetailScreen from './DetailScreen/DetailScreen'
+import CharacterDetailScreen from './CharacterDetailScreen/CharacterDetailScreen'
+import ComicDetailScreen from './ComicDetailScreen/ComicDetailScreen'
 
-export {HomeScreen, SplashScreen, DetailScreen}
+export {HomeScreen, SplashScreen, ComicDetailScreen, CharacterDetailScreen}
