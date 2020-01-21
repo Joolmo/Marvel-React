@@ -5,7 +5,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import { HomeScreen } from '../screens'
+import { HomeScreen, DetailScreen } from '../screens'
 import { Header } from "../components";
 
 
@@ -18,6 +18,12 @@ export default function AppNavigation() {
                 <Switch>
                     <Route path="/Home">
                         <HomeScreen/>
+                    </Route>
+                    <Route path="/CharacerDetail/:id">
+                        <DetailScreen/>
+                    </Route>
+                    <Route path="/ComicDetail/:id">
+                        <DetailScreen/>
                     </Route>
                 </Switch>
             </div>

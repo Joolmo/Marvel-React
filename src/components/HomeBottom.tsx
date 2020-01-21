@@ -18,8 +18,8 @@ export default function HomeBottom({onChangeValue}: IProps) {
 
   return (
       <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar className={classes.toolbar}>
-            <label className={classes.label}>
+        <Toolbar>
+            <label className={`${classes.label} MuiToolbar-regular`}>
               <input
                 type="radio"
                 name="typeOfData"
@@ -33,7 +33,7 @@ export default function HomeBottom({onChangeValue}: IProps) {
               Characters
             </label>
 
-            <label className={classes.label}>
+            <label className={`${classes.label} MuiToolbar-regular`}>
               <input
                 type="radio"
                 name="typeOfData"
@@ -52,10 +52,6 @@ export default function HomeBottom({onChangeValue}: IProps) {
 }
 
 const useStyles = makeStyles(theme => ({
-  toolbar: {
-    maxHeight: 50,
-    backgroundColor: "#e3031c",
-  },
   label: {
     width:"50%",
     height:"100%",
@@ -67,5 +63,6 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     top: 'auto',
     bottom: 0,
+    backgroundColor: "#e3031c",
   }
 }));

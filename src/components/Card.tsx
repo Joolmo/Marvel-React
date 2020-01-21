@@ -3,12 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-//import CardActions from '@material-ui/core/CardActions';
-//import IconButton from '@material-ui/core/IconButton';
+import CardActions from '@material-ui/core/CardActions';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-//import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import { red } from '@material-ui/core/colors';
 import { IMarvelImage } from '../types';
+import { Link } from 'react-router-dom';
 
 
 interface IProps {
@@ -17,35 +18,43 @@ interface IProps {
     id: number
     contentLabel: string
     titleLabel: string
+    fullWidth?: boolean
+    navigationPath: string
 }
 
-export default function RecipeReviewCard({thumbnail, title, titleLabel, id, contentLabel}: IProps) {
+export default function RecipeReviewCard({thumbnail, title, titleLabel, id, contentLabel, navigationPath, fullWidth = false}: IProps) {
   const classes = useStyles();
 
   return (
-    <Card className={classes.card}>
-      <CardMedia
-        className={classes.media}
-        image={`${thumbnail.path}.${thumbnail.extension}`}
-      />
-      <CardContent className={classes.content}>
-        <Typography component="p" className={classes.typography}>
-            {titleLabel}: {title}<br/>
-            {contentLabel}: {id} 
-        </Typography>
-      </CardContent>
-      {/*<CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon style={{color: red[400]}}/>
-        </IconButton>
-      </CardActions>*/}
-    </Card>
+    <Link to={navigationPath}>
+      <Card className={fullWidth ? classes.fullCard : classes.card}>
+        <CardMedia
+          className={classes.media}
+          image={`${thumbnail.path}.${thumbnail.extension}`}
+        />
+        <CardContent className={classes.content}>
+          <Typography component="p" className={classes.typography}>
+              {titleLabel}: {title}<br/>
+              {contentLabel}: {id} 
+          </Typography>
+        </CardContent>
+        <CardActions className={classes.content}>
+          <IconButton aria-label="add to favorites">
+            <FavoriteIcon style={{color: "black"}}/>
+          </IconButton>
+        </CardActions>
+      </Card>
+    </Link>
+
   );
 }
 
 const useStyles = makeStyles(theme => ({
     card: {
-      maxWidth: 600,
+      maxWidth: 700,
+    },
+    fullCard: {
+      maxWidth: 700,
     },
     media: {
       height: 0,

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Card } from "../../components";
+import { Card, HomeBottom } from "../../components";
 import { IMarvelProjection } from "../../types";
 import { CharacterService } from '../../services/characterService'
 import { ComicService } from "../../services/comicService";
 import './HomeScreen.css'
-import HomeBottom from "../../components/HomeBottom";
 
 
 export default function CharacterScreen() {
@@ -61,6 +60,7 @@ export default function CharacterScreen() {
                 titleLabel="NAME"
                 contentLabel="ID"
                 thumbnail={item.thumbnail}
+                navigationPath={`/${typeOfData == "character" ? "ComicDetail" : ""}/${item.id}`}
               />
             </div>
           ))}

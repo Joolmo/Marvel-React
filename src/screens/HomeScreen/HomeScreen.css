@@ -5,4 +5,8 @@
 .projectionCard{
     padding: 10px;
 }
-  
+
+#HomeContainer .MuiAppBar-root .MuiToolbar-gutters {
+    padding-left: 0;
+    padding-right: 0;
+}
