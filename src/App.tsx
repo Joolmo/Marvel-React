@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { SplashScreen } from './components'
+import AppNavigation from './navigation/AppNavigation'
 import './App.css';
 
 const logo = require('./logo.svg');
@@ -11,6 +12,7 @@ export default function App() {
 
   const loadResourcesAsync = async () => {
     await Promise.all([
+      // This way we can see the SplashScreen in development.
       new Promise(resolve => setTimeout(resolve, 3000))
     ]);
   }
@@ -32,23 +34,6 @@ export default function App() {
       />
     )
   } else {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+    return <AppNavigation/>
   }
 }
