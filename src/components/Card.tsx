@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 //import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 //import FavoriteIcon from '@material-ui/icons/Favorite';
-//import { red } from '@material-ui/core/colors';
+import { red } from '@material-ui/core/colors';
 import { IMarvelImage } from '../types';
 
 
@@ -28,8 +28,8 @@ export default function RecipeReviewCard({thumbnail, title, titleLabel, id, cont
         className={classes.media}
         image={`${thumbnail.path}.${thumbnail.extension}`}
       />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+      <CardContent className={classes.content}>
+        <Typography component="p" className={classes.typography}>
             {titleLabel}: {title}<br/>
             {contentLabel}: {id} 
         </Typography>
@@ -45,10 +45,18 @@ export default function RecipeReviewCard({thumbnail, title, titleLabel, id, cont
 
 const useStyles = makeStyles(theme => ({
     card: {
-      maxWidth: 345,
+      maxWidth: 600,
     },
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9
     },
+    content: {
+      backgroundColor: "#e3031c"
+    },
+    typography: {
+      color: "white",
+      textAlign: "center",
+      fontWeight: "bold"
+    }
   }));

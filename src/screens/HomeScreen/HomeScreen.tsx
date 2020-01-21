@@ -4,6 +4,8 @@ import { Card } from "../../components";
 import { IMarvelProjection } from "../../types";
 import { CharacterService } from '../../services/characterService'
 import { ComicService } from "../../services/comicService";
+import './HomeScreen.css'
+import HomeBottom from "../../components/HomeBottom";
 
 
 export default function CharacterScreen() {
@@ -16,6 +18,11 @@ export default function CharacterScreen() {
   useEffect(() => {
     getProjections({ offset, limit })
   }, [offset])
+
+  useEffect(() => {
+    setOffset(0)
+    reset()
+  }, [typeOfData])
 
   const getProjections = (params: any, reset = false) => {
     (typeOfData === "character"? CharacterService.getCharacters: ComicService.getComics)(params).then(projectionsList => {
@@ -35,7 +42,7 @@ export default function CharacterScreen() {
   }
 
   return (
-    <div>
+    <div id="HomeContainer">
       <InfiniteScroll
           dataLength={projections.length}
           next={() => {
@@ -47,14 +54,20 @@ export default function CharacterScreen() {
           loader={<h4>Loading...</h4>}
         >
           {projections.map((item, index) => (
-            <Card id={item.id}title={item.nameTitle}
-              key={index}
-              titleLabel="NAME"
-              contentLabel="ID"
-              thumbnail={item.thumbnail}
-            />
+            <div className="projectionCard" key={index}>
+              <Card
+                id={item.id}
+                title={item.nameTitle}
+                titleLabel="NAME"
+                contentLabel="ID"
+                thumbnail={item.thumbnail}
+              />
+            </div>
           ))}
         </InfiniteScroll>
+        <HomeBottom onChangeValue={(value) => {
+          setTypeOfData(value === "character"? "character" : "comic")
+        }}/>
     </div>
   )
 }

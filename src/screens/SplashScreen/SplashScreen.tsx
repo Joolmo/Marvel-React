@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useEffect } from 'react'
 import './SplashScreen.css'
 
-const splashImage = require('./SplashImage.png')
+const splashImage = require('../../assets/marvelImage.png')
 
 interface IProps {
     startAsync: () => Promise<void>
