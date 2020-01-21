@@ -1,11 +1,11 @@
-import { IMarvelCharacter, IMarvelResponse, IMarvelCharacterProjection } from "../types"
+import { IMarvelCharacter, IMarvelResponse, IMarvelProjection } from "../types"
 import { MarvelDataSource } from "./marvelDataSource"
 
 
-const characterListMapper = (characterList: IMarvelCharacter[]): IMarvelCharacterProjection[] => {
+const characterListMapper = (characterList: IMarvelCharacter[]): IMarvelProjection[] => {
     return characterList.map(marvelCharacter => {
         const { id, name, thumbnail } = marvelCharacter
-        return { id, name, thumbnail }
+        return { id, nameTitle: name, thumbnail }
     })
 }
 
@@ -20,7 +20,7 @@ const getParamsString = (paramsToSet: { [key: string]: string }) => {
 }
 
 
-const getCharacters = ({ ...params }): Promise<IMarvelCharacterProjection[]> => {
+const getCharacters = ({ ...params }): Promise<IMarvelProjection[]> => {
     const config = {
         pathName: "characters",
         params: getParamsString(params)
@@ -29,7 +29,7 @@ const getCharacters = ({ ...params }): Promise<IMarvelCharacterProjection[]> => 
         .then(characterList => characterListMapper(characterList.results))
 }
 
-const getCharacterById = (id): Promise<IMarvelCharacter[]> => {
+const getCharacterById = (id: number | string): Promise<IMarvelCharacter[]> => {
     const config = {
         pathName: `characters/${id}`,
     }

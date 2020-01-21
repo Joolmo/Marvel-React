@@ -11,11 +11,12 @@ export interface IMarvelImage {
     path: string;
 }
 
-export interface IMarvelCharacterProjection {
+export interface IMarvelProjection {
     id: number;
-    name: string;
+    nameTitle: string;
     thumbnail: IMarvelImage;
 }
+
 interface IMarvelCharacter {
     id: number;
     name: string;
@@ -42,11 +43,6 @@ interface IMarvelComic {
     creators: any;
 }
 
-interface IMarvelComicProjection {
-    id: number;
-    title: string;
-    thumbnail: IMarvelImage;
-}
 interface IMarvelUrl {
     type: string;
     url: string;

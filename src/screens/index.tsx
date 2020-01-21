@@ -1,5 +1,4 @@
-import CharacterScreen from './CharacterScreen'
-import ComicScreen from './ComicScreen'
+import HomeScreen from './HomeScreen/HomeScreen'
 import SplashScreen from './SplashScreen/SplashScreen'
 
-export {CharacterScreen, ComicScreen, SplashScreen}
+export {HomeScreen, SplashScreen}

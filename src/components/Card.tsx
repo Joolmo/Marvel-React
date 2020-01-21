@@ -26,12 +26,12 @@ export default function RecipeReviewCard({thumbnail, title, titleLabel, id, cont
     <Card className={classes.card}>
       <CardMedia
         className={classes.media}
-        image={thumbnail.path}
+        image={`${thumbnail.path}.${thumbnail.extension}`}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-            <p>{titleLabel}: {title}</p>
-            <p>{contentLabel}: {id}</p> 
+            {titleLabel}: {title}<br/>
+            {contentLabel}: {id} 
         </Typography>
       </CardContent>
       {/*<CardActions disableSpacing>

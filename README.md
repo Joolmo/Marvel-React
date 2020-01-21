@@ -7,4 +7,4 @@
 ### * 6 favourite behaviour (opcional)
 
 # Comentarios:
-* He copiado los tipos y servicios de forma literal, un intento de implementarlos de nuevo resultaría en una copia subconsciente de todas formas.
+* He copiado los tipos y servicios de forma literal, con algunos ajustes para que se adapten más a mi código.
