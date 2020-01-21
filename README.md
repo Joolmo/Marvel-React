@@ -5,3 +5,6 @@
 ### * 4 infinite scroll en la lista de personajes/comics
 ### * 5 search functionality in main page(buscará también en función del input radio)
 ### * 6 favourite behaviour (opcional)
+
+# Comentarios:
+* He copiado los tipos y servicios de forma literal, un intento de implementarlos de nuevo resultaría en una copia subconsciente de todas formas.
