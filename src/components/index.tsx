@@ -1,3 +1,3 @@
-import SplashScreen from './SplashScreen/SplashScreen'
+import Card from './Card'
 
-export { SplashScreen }
+export { Card }

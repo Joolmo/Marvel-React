@@ -1,7 +1,7 @@
 import CryptoJS from "crypto-js"
 import { IMarvelResponse } from "../types"
-const PUBLIC_KEY = "156d63b5be37a3a559312c5e7f0bbbe5"
-const PRIVATE_KEY = "eca02da53af793af00c21e627d66e17cbc79f2a1"
+const PUBLIC_KEY = "e86caf53bae4f8e29d33286e8bc0017c"
+const PRIVATE_KEY = "fd008e3aa7c5110df169e8da7a8c3843443dc9c9"
 const BASE_URL = "http://gateway.marvel.com/v1/public"
 
 interface IMarvelProps {

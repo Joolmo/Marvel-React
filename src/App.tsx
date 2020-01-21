@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { SplashScreen } from './components'
+import { SplashScreen } from './screens'
 import AppNavigation from './navigation/AppNavigation'
 import './App.css';
 
