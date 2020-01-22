@@ -20,14 +20,15 @@ interface IProps {
     titleLabel: string
     navigationPath: string
     fullWidth?: boolean
+    borderRadious?: boolean
 }
 
-export default function RecipeReviewCard({thumbnail, title, titleLabel, id, contentLabel, navigationPath, fullWidth = false}: IProps) {
+export default function RecipeReviewCard({thumbnail, title, titleLabel, id, contentLabel, navigationPath, fullWidth = false, borderRadious = false}: IProps) {
   const classes = useStyles();
 
   return (
     <Link to={navigationPath} style={{textDecoration: "none"}}>
-      <Card className={fullWidth ? classes.fullCard : classes.card}>
+      <Card className={fullWidth ? classes.fullCard : classes.card} style={borderRadious ? {borderRadius: 0} : undefined}>
         <CardMedia
           className={classes.media}
           image={`${thumbnail.path}.${thumbnail.extension}`}
@@ -37,7 +38,7 @@ export default function RecipeReviewCard({thumbnail, title, titleLabel, id, cont
               {titleLabel}: {title}<br/>
               {contentLabel}: {id} 
           </Typography>
-          <FavoriteIcon style={{color: "white"}}/>
+          <FavoriteIcon style={{color: "c1c1c1", backgroundColor: "white", borderRadius: "50%", padding: 7}}/>
         </CardContent>
       </Card>
     </Link>

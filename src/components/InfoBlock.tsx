@@ -75,9 +75,11 @@ const useStyles = makeStyles(theme => ({
         textAlign: "center",
     },
     infoBlock: {
+        marginTop: 20,
         backgroundColor: "white",
         marginLeft: "5%",
         marginRight: "5%"
+
     },
     descText: {
         marginLeft: "5%",
@@ -86,12 +88,15 @@ const useStyles = makeStyles(theme => ({
     linksContainer: {
         marginLeft: "5%",
         marginRight: "5%",
-        width: "100%"
     },
     link: {
         backgroundColor: "#e3031c",
         color: "white",
         marginBottom: 10,
-        width: "100%"
+        display: "flex",
+        flex: 1,
+        '&:hover': {
+            backgroundColor: "#bf0316"
+        }, 
     }
 }));
