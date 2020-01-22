@@ -37,12 +37,8 @@ export default function RecipeReviewCard({thumbnail, title, titleLabel, id, cont
               {titleLabel}: {title}<br/>
               {contentLabel}: {id} 
           </Typography>
+          <FavoriteIcon style={{color: "white"}}/>
         </CardContent>
-        <CardActions className={classes.content}>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon style={{color: "black"}}/>
-          </IconButton>
-        </CardActions>
       </Card>
     </Link>
   );
@@ -51,18 +47,23 @@ export default function RecipeReviewCard({thumbnail, title, titleLabel, id, cont
 const useStyles = makeStyles(theme => ({
     card: {
       maxWidth: 700,
+      backgroundColor: "#e3031c",
     },
-    fullCard: {},
+    fullCard: {backgroundColor: "#e3031c"},
     media: {
       height: 0,
       paddingTop: '56.25%', // 16:9
     },
     content: {
-      backgroundColor: "#e3031c"
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      marginLeft: "5%",
+      marginRight: "5%",
     },
     typography: {
       color: "white",
-      textAlign: "center",
       fontWeight: "bold"
     }
   }));

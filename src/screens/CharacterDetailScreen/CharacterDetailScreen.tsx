@@ -34,14 +34,15 @@ export default function CharacterDetailScreen(props: any) {
                         entity={character}
                         resolver={ entity => {
                             const { comics, series, stories, events } = (entity as IMarvelCharacter)
-                            const getValue = (from: any): string => !!from.value ? from.value.available : undefined
+                            const getValue = (from: any): string => !!from ? from.available : undefined
+                            const favoriteIcon = <FavoriteIcon style={{color:"#e3031c"}}/>
                                 
                             return {
                                 config: [
-                                    { name: "COMICS", value: getValue(comics), icon: <FavoriteIcon/> },
-                                    { name: "SERIES", value: getValue(series), icon: <FavoriteIcon/> },
-                                    { name: "STORIES", value: getValue(stories), icon: <FavoriteIcon/> },
-                                    { name: "EVENTS", value: getValue(events), icon: <FavoriteIcon/> }
+                                    { name: "COMICS", value: getValue(comics), icon: favoriteIcon },
+                                    { name: "SERIES", value: getValue(series), icon: favoriteIcon },
+                                    { name: "STORIES", value: getValue(stories), icon: favoriteIcon },
+                                    { name: "EVENTS", value: getValue(events), icon: favoriteIcon }
                                 ].filter(item => !!item.value)
                             }
                         }}
