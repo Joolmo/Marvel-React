@@ -4,7 +4,6 @@ import { Card, HomeBottom } from "../components";
 import { IMarvelProjection } from "../types";
 import { CharacterService } from '../services/characterService'
 import { ComicService } from "../services/comicService";
-import '../assets/HomeScreen.css'
 
 
 export default function CharacterScreen() {

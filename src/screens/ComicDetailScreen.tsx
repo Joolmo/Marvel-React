@@ -8,6 +8,7 @@ import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import CreateIcon from '@material-ui/icons/Create';
+import StyleConstants from '../constants/styleConstants';
 
 
 export default function ComicDetailScreen() {
@@ -47,10 +48,10 @@ export default function ComicDetailScreen() {
                             const { characters, creators, stories, events } = (entity as IMarvelComic)
                             const getValue = (from: any): string => !!from ? from.available : undefined
 
-                            const libraryBooksIcon = <LibraryBooksIcon style={{color:"#e3031c"}}/>
-                            const eventAvailableIcon = <EventAvailableIcon style={{color:"#e3031c"}}/>
-                            const accessibilityIcon = <AccessibilityIcon style={{color:"#e3031c"}}/>
-                            const createIcon = <CreateIcon style={{color:"#e3031c"}}/>
+                            const libraryBooksIcon = <LibraryBooksIcon style={{color: StyleConstants.marvelDarkRed}}/>
+                            const eventAvailableIcon = <EventAvailableIcon style={{color: StyleConstants.marvelDarkRed}}/>
+                            const accessibilityIcon = <AccessibilityIcon style={{color: StyleConstants.marvelDarkRed}}/>
+                            const createIcon = <CreateIcon style={{color: StyleConstants.marvelDarkRed}}/>
                                 
                             return {
                                 config: [

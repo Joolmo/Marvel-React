@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { useEffect } from 'react'
-import '../assets/SplashScreen.css'
 import { makeStyles } from '@material-ui/core/styles';
 import StyleConstants from '../constants/styleConstants'
 
