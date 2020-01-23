@@ -4,6 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from 'react-router-dom';
+import StyleConstants from '../constants/styleConstants';
 
 const headerImage = require('../assets/marvelImage.png')
 
@@ -13,9 +14,9 @@ export default function Header() {
 
   return (
     <AppBar position="sticky">
-      <Toolbar className={classes.toolbar}>
+      <Toolbar className={classes.toolbar} id="toolBar">
         <Link to="/Home" className={classes.logo}>
-          <img src={headerImage} alt="headerImage" height="75" width="210"/>
+          <img src={headerImage} alt="headerImage" id="headerImage"/>
           <Typography className={classes.title}>
             Characters and Comics
           </Typography>
@@ -27,17 +28,16 @@ export default function Header() {
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
-    minHeight: 100,
-    paddingTop: theme.spacing(1),
-    paddingBottom: theme.spacing(2),
-    backgroundColor: "#e3031c",
+    backgroundColor: StyleConstants.marvelRed,
   },
   title: {
     textAlign: "center",
-    color:"white",
+    color: StyleConstants.lightFontColor,
   },
   logo: {
     margin: "auto",
-    textDecoration: "none"
+    textDecoration: "none",
+    display: "flex",
+    flexDirection: "column"
   }
 }));

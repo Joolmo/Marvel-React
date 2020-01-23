@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useState } from 'react';
 import { SplashScreen } from './screens'
 import AppNavigation from './navigation/AppNavigation'
-import './App.css';
 
 
 export default function App() {
@@ -11,7 +10,7 @@ export default function App() {
   const loadResourcesAsync = async () => {
     await Promise.all([
       // This way we can see the SplashScreen in development.
-      new Promise(resolve => setTimeout(resolve, 3000))
+      new Promise(resolve => setTimeout(resolve, 1000))
     ]);
   }
 

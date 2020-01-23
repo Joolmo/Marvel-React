@@ -4,6 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { useState, useEffect } from "react";
+import StyleConstants from '../constants/styleConstants'
 
 const headerImage = require('../assets/marvelImage.png')
 
@@ -23,7 +24,7 @@ export default function HomeBottom({onChangeValue}: IProps) {
   return (
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-            <label className={`${classes.label} MuiToolbar-regular ${radioValue=="character"? classes.selectedLabel : ""}`}>
+            <label className={`${classes.label} ${radioValue=="character"? classes.selectedLabel : ""}`}>
               <input
                 type="radio"
                 name="typeOfData"
@@ -34,7 +35,7 @@ export default function HomeBottom({onChangeValue}: IProps) {
               <p>Characters</p>
             </label>
 
-            <label className={`${classes.label} MuiToolbar-regular ${radioValue=="comic"? classes.selectedLabel : ""}`}>
+            <label className={`${classes.label} ${radioValue=="comic"? classes.selectedLabel : ""}`}>
               <input
                 type="radio"
                 name="typeOfData"
@@ -68,6 +69,7 @@ const useStyles = makeStyles(theme => ({
   appBar: {
     top: 'auto',
     bottom: 0,
-    backgroundColor: "#e3031c",
+    backgroundColor: StyleConstants.marvelRed,
+    height: 74
   }
 }));

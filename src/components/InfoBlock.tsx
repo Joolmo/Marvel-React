@@ -2,6 +2,7 @@ import * as React from 'react'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { IMarvelComic, IMarvelCharacter } from '../types';
 import { Button, makeStyles } from '@material-ui/core';
+import StyleConstants from '../constants/styleConstants'
 
 
 interface IIconsProps {
@@ -69,14 +70,14 @@ const useStyles = makeStyles(theme => ({
     iconText: {
         textAlign: "center",
         margin: 0,
-        color: "black" //"#e3031c"
+        color: StyleConstants.darkFontColor
     },
     iconContainer: {
         textAlign: "center",
     },
     infoBlock: {
         marginTop: 20,
-        backgroundColor: "white",
+        backgroundColor: StyleConstants.whiteBackGround,
         marginLeft: "5%",
         marginRight: "5%"
 
@@ -90,13 +91,13 @@ const useStyles = makeStyles(theme => ({
         marginRight: "5%",
     },
     link: {
-        backgroundColor: "#e3031c",
-        color: "white",
+        backgroundColor: StyleConstants.marvelRed,
+        color: StyleConstants.lightFontColor,
         marginBottom: 10,
         display: "flex",
         flex: 1,
         '&:hover': {
-            backgroundColor: "#bf0316"
+            backgroundColor: StyleConstants.marvelDarkRed
         }, 
     }
 }));

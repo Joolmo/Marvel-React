@@ -1,22 +1,29 @@
 import * as React from 'react'
-import { useParams } from 'react-router-dom';
-import { Card, InfoBlock } from '../../components';
 import { useState, useEffect } from 'react';
-import { IMarvelComic, IMarvelCharacter } from '../../types';
-import { ComicService } from '../../services/comicService';
+import { useParams, useHistory } from 'react-router-dom';
+import { Card, InfoBlock } from '../components';
+import { IMarvelComic, IMarvelCharacter } from '../types';
+import { ComicService } from '../services/comicService';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import CreateIcon from '@material-ui/icons/Create';
 
 
-export default function ComicDetailScreen(props: any) {
+export default function ComicDetailScreen() {
     let { id } = useParams();
+    const history = useHistory();
     const [comic, setComic] = useState<IMarvelComic | undefined>(undefined)
 
     useEffect(() => {
-        if (id) {
-            ComicService.getComicsById(id).then((result) => setComic(result[0]))
+        if (id){
+            ComicService.getComicsById(id).then((result) => setComic(result[0])).catch((error) => {
+                if(error == "undefinedError") {
+                    history.push("/home");
+                } else {
+                    console.warn(error)
+                }
+            })
         }
     }, [])
 
@@ -32,6 +39,7 @@ export default function ComicDetailScreen(props: any) {
                         thumbnail={comic.thumbnail}
                         navigationPath={`/ComicDetail/${comic.id}`}
                         fullWidth={true}
+                        borderRadious={false}
                     />
                     <InfoBlock
                         entity={comic}

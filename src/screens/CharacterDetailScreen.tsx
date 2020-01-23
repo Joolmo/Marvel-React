@@ -1,21 +1,30 @@
 import * as React from 'react'
-import { useParams } from 'react-router-dom';
-import { Card, InfoBlock } from '../../components';
+import { useParams, useHistory } from 'react-router-dom';
+import { Card, InfoBlock } from '../components';
 import { useState, useEffect } from 'react';
-import { IMarvelCharacter } from '../../types';
-import { CharacterService } from '../../services/characterService';
+import { IMarvelCharacter } from '../types';
+import { CharacterService } from '../services/characterService';
 import LocalLibraryIcon from '@material-ui/icons/LocalLibrary';
 import TheatersIcon from '@material-ui/icons/Theaters';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import StyleConstants from '../constants/styleConstants';
+
 
 export default function CharacterDetailScreen(props: any) {
     let { id } = useParams();
+    const history = useHistory();
     const [character, setCharacter] = useState<IMarvelCharacter | undefined>(undefined)
 
     useEffect(() => {
-        if(id){
-            CharacterService.getCharacterById(id).then((result) => setCharacter(result[0]))
+        if(id) {
+            CharacterService.getCharacterById(id).then((result) => setCharacter(result[0])).catch((error) => {
+                if(error == "undefinedError") {
+                    history.push("/home");
+                } else {
+                    console.warn(error)
+                }
+            })
         }
     }, [])
 
@@ -31,7 +40,7 @@ export default function CharacterDetailScreen(props: any) {
                         thumbnail={character.thumbnail}
                         navigationPath={`/CharacerDetail/${character.id}`}
                         fullWidth={true}
-                        borderRadious={true}
+                        borderRadious={false}
                     />
                     <InfoBlock
                         entity={character}
@@ -39,10 +48,10 @@ export default function CharacterDetailScreen(props: any) {
                             const { comics, series, stories, events } = (entity as IMarvelCharacter)
                             const getValue = (from: any): string => !!from ? from.available : undefined
 
-                            const localLibraryIcon = <LocalLibraryIcon style={{color:"#e3031c"}}/>
-                            const theatersIcon = <TheatersIcon style={{color:"#e3031c"}}/>
-                            const libraryBooksIcon = <LibraryBooksIcon style={{color:"#e3031c"}}/>
-                            const eventAvailableIcon = <EventAvailableIcon style={{color:"#e3031c"}}/>
+                            const localLibraryIcon = <LocalLibraryIcon style={{color: StyleConstants.marvelDarkRed}}/>
+                            const theatersIcon = <TheatersIcon style={{color: StyleConstants.marvelDarkRed}}/>
+                            const libraryBooksIcon = <LibraryBooksIcon style={{color: StyleConstants.marvelDarkRed}}/>
+                            const eventAvailableIcon = <EventAvailableIcon style={{color: StyleConstants.marvelDarkRed}}/>
 
                             return {
                                 config: [

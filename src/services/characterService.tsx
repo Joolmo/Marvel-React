@@ -1,4 +1,4 @@
-import { IMarvelCharacter, IMarvelResponse, IMarvelProjection } from "../types"
+import { IMarvelCharacter, IMarvelProjection } from "../types"
 import { MarvelDataSource } from "./marvelDataSource"
 
 
@@ -34,7 +34,12 @@ const getCharacterById = (id: number | string): Promise<IMarvelCharacter[]> => {
         pathName: `characters/${id}`,
     }
     return MarvelDataSource(config)
-        .then(characterList => characterList.results)
+        .then(characterList => {
+            if(characterList === undefined) {
+                throw "undefinedError"
+            }
+            return characterList.results
+        })
 }
 
 export const CharacterService = {
