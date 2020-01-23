@@ -1,11 +1,7 @@
-.projectionCard .MuiPaper-root {
-  margin: auto
+#HomeContainer .MuiAppBar-root .MuiToolbar-gutters {
+  padding-left: 0;
+  padding-right: 0;
 }
-
-.projectionCard{
-  padding: 10px;
-}
-
 
 body {
   margin: 0;
@@ -19,12 +15,6 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-
-#HomeContainer .MuiAppBar-root .MuiToolbar-gutters {
-  padding-left: 0;
-  padding-right: 0;
 }
 
 @media(max-width: 400px){

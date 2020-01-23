@@ -19,14 +19,24 @@ interface IProps {
     navigationPath: string
     fullWidth?: boolean
     borderRadious?: boolean
+    className?: any
 }
 
-export default function RecipeReviewCard({thumbnail, title, titleLabel, id, contentLabel, navigationPath, fullWidth = false, borderRadious = true}: IProps) {
+export default function RecipeReviewCard({thumbnail,
+  title, 
+  titleLabel, 
+  id, 
+  contentLabel, 
+  navigationPath,
+  className,
+  fullWidth = false, 
+  borderRadious = true
+}: IProps) {
   const classes = useStyles();
 
   return (
     <Link to={navigationPath} className={classes.link}>
-      <Card className={`${classes.card} ${!fullWidth ? classes.noFull : ""} ${!borderRadious ? classes.noBorderRadious : ""}`}>
+      <Card className={`${classes.card} ${!fullWidth ? classes.noFull : ""} ${!borderRadious ? classes.noBorderRadious : ""} ${className ? className : ""}`}>
         <CardMedia
           className={classes.cardMedia}
           image={`${thumbnail.path}.${thumbnail.extension}`}

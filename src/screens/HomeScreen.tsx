@@ -4,6 +4,7 @@ import { Card, HomeBottom } from "../components";
 import { IMarvelProjection } from "../types";
 import { CharacterService } from '../services/characterService'
 import { ComicService } from "../services/comicService";
+import { makeStyles } from "@material-ui/core/styles";
 
 
 export default function CharacterScreen() {
@@ -16,6 +17,7 @@ export default function CharacterScreen() {
   const [hasMoreComics, setHasMoreComics] = useState(true)
   const [hasMoreCharacters, setHasMoreCharacters] = useState(true)
   const [typeOfData, setTypeOfData] = useState<"comic" | "character">("character")
+  const classes = useStyles();
 
   useEffect(() => {
     if(typeResolver().offset > 0) {
@@ -71,13 +73,14 @@ export default function CharacterScreen() {
           loader={<h4 style={{textAlign: "center"}}>Loading...</h4>}
         >
           {typeResolver().marvelProjections.map((item, index) => (
-            <div className="projectionCard" key={index}>
+            <div className={classes.projectionCard} key={index}>
               <Card
                 id={item.id}
                 title={item.nameTitle}
                 titleLabel="NAME"
                 contentLabel="ID"
                 thumbnail={item.thumbnail}
+                className={classes.card}
                 navigationPath={`/${typeOfData == "character" ? "CharacerDetail" : "ComicDetail"}/${item.id}`}
               />
             </div>
@@ -90,3 +93,12 @@ export default function CharacterScreen() {
     </div>
   )
 }
+
+const useStyles = makeStyles(theme => ({
+  projectionCard: {
+    padding: 10
+  },
+  card: {
+    margin: "auto",
+  }
+}))
