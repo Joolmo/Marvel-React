@@ -19,7 +19,6 @@ interface IProps {
     navigationPath: string
     fullWidth?: boolean
     borderRadious?: boolean
-    className?: any
 }
 
 export default function RecipeReviewCard({thumbnail,
@@ -28,7 +27,6 @@ export default function RecipeReviewCard({thumbnail,
   id, 
   contentLabel, 
   navigationPath,
-  className,
   fullWidth = false, 
   borderRadious = true
 }: IProps) {
@@ -36,7 +34,7 @@ export default function RecipeReviewCard({thumbnail,
 
   return (
     <Link to={navigationPath} className={classes.link}>
-      <Card className={`${classes.card} ${!fullWidth ? classes.noFull : ""} ${!borderRadious ? classes.noBorderRadious : ""} ${className ? className : ""}`}>
+      <Card className={`${classes.card} ${!fullWidth ? classes.noFull : ""} ${!borderRadious ? classes.noBorderRadious : ""}`}>
         <CardMedia
           className={classes.cardMedia}
           image={`${thumbnail.path}.${thumbnail.extension}`}
@@ -58,7 +56,8 @@ const useStyles = makeStyles(theme => ({
     textDecoration: "none"
   },
   card: {
-    backgroundColor: StyleConstants.marvelRed
+    backgroundColor: StyleConstants.marvelRed,
+    margin: "auto"
   },
   cardMedia: {
     height: 0,

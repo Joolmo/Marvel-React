@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { Card, HomeBottom } from "../components";
+import { Card, SearchBar } from "../components";
 import { IMarvelProjection } from "../types";
 import { CharacterService } from '../services/characterService'
 import { ComicService } from "../services/comicService";
@@ -62,6 +62,7 @@ export default function CharacterScreen() {
 
   return (
     <div id="HomeContainer">
+      <SearchBar/>
       <InfiniteScroll
           dataLength={typeResolver().marvelProjections.length}
           next={() => {
@@ -80,16 +81,15 @@ export default function CharacterScreen() {
                 titleLabel="NAME"
                 contentLabel="ID"
                 thumbnail={item.thumbnail}
-                className={classes.card}
                 navigationPath={`/${typeOfData == "character" ? "CharacerDetail" : "ComicDetail"}/${item.id}`}
               />
             </div>
           ))}
         </InfiniteScroll>
-        <HomeBottom onChangeValue={(value) => {
+        {/*<HomeBottom onChangeValue={(value) => {
           setTypeOfData(value === "character" ? "character" : "comic")
           window.scrollTo(0, 0)
-        }}/>
+        }}/>*/}
     </div>
   )
 }
@@ -97,8 +97,5 @@ export default function CharacterScreen() {
 const useStyles = makeStyles(theme => ({
   projectionCard: {
     padding: 10
-  },
-  card: {
-    margin: "auto",
   }
 }))

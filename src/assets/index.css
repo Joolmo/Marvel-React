@@ -17,29 +17,47 @@ code {
     monospace;
 }
 
-@media(max-width: 400px){
+@media(max-width: 415px){
   #headerImage {
-      height:50px;
-      width:140px;
-      margin: auto;
+    height:50px;
+    width:140px;
+    margin: auto;
   }
   #toolBar{
-      height: 78;
+    height: 78px;
+  }
+  #HomeContainer .searchBar{
+    top: 102px;
+    height: 56px;
+  }
+  #HomeContainer .radioMarvel{
+    height: 56px;
+  }
+  #HomeContainer .radioIconText {
+    display: none;
   }
 }
-@media(min-width: 400px) {
+
+@media(min-width: 415px) {
   #headerImage {
-      height:75px;
-      width:210px;
-      margin: auto;
+    height:75px;
+    width:210px;
+    margin: auto;
   }
   #toolBar{
-      height: 103;
+    height: 103px;
+  }
+  #HomeContainer .searchBar{
+    top: 127px;
+    height: 74px;
+  }
+  #HomeContainer .radioMarvel{
+    height: 74px;
   }
 }
 
 #toolBar{
-  padding-top: 8;
+  padding-top: 8px;
   padding-bottom: 16px;
 }
 
@@ -47,7 +65,7 @@ html, body, #root {
   height: 100%
 }
 
-@media (max-width: 400px) {
+@media (max-width: 415px) {
   #SplashContainer img {
       height: 125px;
       width: 350px;

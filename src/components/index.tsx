@@ -1,6 +1,7 @@
 import Card from './Card'
 import Header from './Header'
-import HomeBottom from './HomeBottom'
+import RadioMarvel from './RadioMarvel'
 import InfoBlock from './InfoBlock'
+import SearchBar from './SearchBar'
 
-export { Card, Header, HomeBottom, InfoBlock }
+export { Card, Header, RadioMarvel, InfoBlock, SearchBar }

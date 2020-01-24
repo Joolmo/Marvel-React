@@ -20,7 +20,7 @@ export default function SplashScreen({startAsync, onError, onFinish}: IProps) {
     }, [])
 
     return (
-        <div className={classes.container}>
+        <div className={classes.container} id="SplashContainer">
             <img src={splashImage} alt="splashImage"/>
         </div>
     )
