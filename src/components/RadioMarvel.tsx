@@ -5,8 +5,6 @@ import StyleConstants from '../constants/styleConstants'
 import AccessibilityIcon from '@material-ui/icons/Accessibility';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 
-const headerImage = require('../assets/marvelImage.png')
-
 
 interface IPropsIcon {
   icon: JSX.Element,

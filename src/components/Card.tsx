@@ -33,21 +33,23 @@ export default function RecipeReviewCard({thumbnail,
   const classes = useStyles();
 
   return (
-    <Link to={navigationPath} className={classes.link}>
-      <Card className={`${classes.card} ${!fullWidth ? classes.noFull : ""} ${!borderRadious ? classes.noBorderRadious : ""}`}>
+    <Card className={`${classes.card} ${!fullWidth ? classes.noFull : ""} ${!borderRadious ? classes.noBorderRadious : ""}`}>
+      <Link to={navigationPath} className={classes.link}>
         <CardMedia
           className={classes.cardMedia}
           image={`${thumbnail.path}.${thumbnail.extension}`}
         />
-        <CardContent className={classes.cardContent}>
+      </Link>
+      <CardContent className={classes.cardContent}>
+        <Link to={navigationPath} className={classes.link}>
           <Typography component="p" className={classes.typography}>
               {titleLabel}: {title}<br/>
               {contentLabel}: {id} 
           </Typography>
-          <FavoriteIcon className={classes.favoriteIcon}/>
-        </CardContent>
-      </Card>
-    </Link>
+        </Link>
+        <FavoriteIcon className={classes.favoriteIcon} style={{color: "#c1c1c1" /* isFav ?  StyleConstants.marvelRed : "#c1c1c1"*/}}/>
+      </CardContent>
+    </Card>
   );
 }
  
@@ -76,7 +78,6 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold"
   },
   favoriteIcon: {
-    color: "#c1c1c1",
     backgroundColor: StyleConstants.whiteBackGround,
     borderRadius: "50%",
     padding: 7
@@ -84,7 +85,7 @@ const useStyles = makeStyles(theme => ({
   noFull: {
     maxWidth: 700
   },
-  noBorderRadious:{
+  noBorderRadious: {
     borderRadius: 0
   }
 }));

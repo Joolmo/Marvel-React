@@ -61,6 +61,7 @@ const useStyles = makeStyles(theme => ({
     },
     inputRoot: {
         color: StyleConstants.darkFontColor,
+        width: "100%"
     },
     inputInput: {
         padding: theme.spacing(1, 1, 1, 7),
