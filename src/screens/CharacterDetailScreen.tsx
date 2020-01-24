@@ -38,7 +38,7 @@ export default function CharacterDetailScreen(props: any) {
                         titleLabel="NAME"
                         contentLabel="ID"
                         thumbnail={character.thumbnail}
-                        navigationPath={`/CharacerDetail/${character.id}`}
+                        typeOfData="character"
                         fullWidth={true}
                         borderRadious={false}
                     />

@@ -38,7 +38,7 @@ export default function ComicDetailScreen() {
                         titleLabel="NAME"
                         contentLabel="ID"
                         thumbnail={comic.thumbnail}
-                        navigationPath={`/ComicDetail/${comic.id}`}
+                        typeOfData="comic"
                         fullWidth={true}
                         borderRadious={false}
                     />

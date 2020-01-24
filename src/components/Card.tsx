@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import useFavs from '../hooks/useFavs';
 
 
 interface IProps {
@@ -16,7 +17,7 @@ interface IProps {
     id: number
     contentLabel: string
     titleLabel: string
-    navigationPath: string
+    typeOfData: "comic" | "character"
     fullWidth?: boolean
     borderRadious?: boolean
 }
@@ -26,16 +27,21 @@ export default function RecipeReviewCard({thumbnail,
   titleLabel, 
   id, 
   contentLabel, 
-  navigationPath,
+  typeOfData,
   fullWidth = false, 
   borderRadious = true
 }: IProps) {
   const classes = useStyles();
+  const { favArray, modifyFavArray } = useFavs(typeOfData)
 
   return (
     <Card className={`${classes.card} ${!fullWidth ? classes.noFull : ""} ${!borderRadious ? classes.noBorderRadious : ""}`}>
-      <FavoriteIcon className={classes.favoriteIcon} style={{color: "#c1c1c1" /* isFav ?  StyleConstants.marvelRed : "#c1c1c1"*/}}/>
-      <Link to={navigationPath} className={classes.link}>
+      <FavoriteIcon 
+        className={classes.favoriteIcon} 
+        style={{color: favArray.indexOf(String(id)) !== -1 ?  StyleConstants.marvelRed : "#c1c1c1"}} 
+        onClick={() => modifyFavArray(id)}
+      />
+      <Link to={`/${typeOfData == "character" ? "CharacerDetail" : "ComicDetail"}/${id}`} className={classes.link}>
         <CardMedia
           className={classes.cardMedia}
           image={`${thumbnail.path}.${thumbnail.extension}`}

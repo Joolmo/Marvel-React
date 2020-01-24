@@ -5,6 +5,7 @@ import { IMarvelProjection } from "../types";
 import { CharacterService } from '../services/characterService'
 import { ComicService } from "../services/comicService";
 import { makeStyles } from "@material-ui/core/styles";
+import { CircularProgress } from "@material-ui/core";
 
 
 export default function CharacterScreen() {
@@ -98,7 +99,11 @@ export default function CharacterScreen() {
             }
           }}
           hasMore={typeResolver().hasMore}
-          loader={<h4 style={{textAlign: "center"}}>Loading...</h4>}
+          loader={(
+            <div className={classes.activityIndicatorContainer}>
+              <CircularProgress className={classes.activityIndicator} color="secondary" />
+            </div>
+          )}
         >
           {typeResolver().marvelProjections.map((item, index) => (
             <div className={classes.projectionCard} key={index}>
@@ -108,7 +113,7 @@ export default function CharacterScreen() {
                 titleLabel="NAME"
                 contentLabel="ID"
                 thumbnail={item.thumbnail}
-                navigationPath={`/${typeOfData == "character" ? "CharacerDetail" : "ComicDetail"}/${item.id}`}
+                typeOfData={typeOfData}
               />
             </div>
           ))}
@@ -120,5 +125,13 @@ export default function CharacterScreen() {
 const useStyles = makeStyles(theme => ({
   projectionCard: {
     padding: 10
+  },
+  activityIndicatorContainer: {
+    display: "flex",
+    width: "100%",
+    justifyItems: "center"
+  },
+  activityIndicator: {
+    margin: "auto"
   }
 }))

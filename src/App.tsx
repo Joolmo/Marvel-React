@@ -2,6 +2,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import { SplashScreen } from './screens'
 import AppNavigation from './navigation/AppNavigation'
+import { FavCharactersProvider } from './providers/favCharactersProvider';
+import { FavComicsProvider } from './providers/favComicsProvider';
 
 
 export default function App() {
@@ -31,6 +33,12 @@ export default function App() {
       />
     )
   } else {
-    return <AppNavigation/>
+    return (
+      <FavCharactersProvider>
+        <FavComicsProvider>
+          <AppNavigation/>
+        </FavComicsProvider>
+      </FavCharactersProvider>
+    )
   }
 }
