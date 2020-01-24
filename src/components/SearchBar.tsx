@@ -3,20 +3,23 @@ import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles, Toolbar, AppBar, fade, InputBase } from '@material-ui/core';
 import StyleConstants from '../constants/styleConstants';
 import RadioMarvel from './RadioMarvel'
+import { useState } from 'react';
 
 
 interface IProps {
-    
+    onRadioChange: (newValue: string) => void
+    onSearchPressed: (text: string) => void
 }
 
-export default function SearchBar() {
+export default function SearchBar({onRadioChange, onSearchPressed}: IProps) {
     const classes = useStyles();
+    const [searchText, setSearchText] = useState("")
 
     return(
         <AppBar component="div" position="sticky" className={`searchBar ${classes.container}`}>
             <Toolbar className={classes.toolBarContainer}>
                 <div className={classes.search}>
-                    <div className={classes.searchIcon}>
+                    <div className={classes.searchIcon} onClick={() => onSearchPressed(searchText)}>
                         <SearchIcon />
                     </div>
                     <InputBase
@@ -25,10 +28,19 @@ export default function SearchBar() {
                             root: classes.inputRoot,
                             input: classes.inputInput,
                         }}
-                        inputProps={{ 'aria-label': 'search' }}
+                        inputProps={{
+                            'aria-label': 'search',
+                            'onKeyPress': (e) => {
+                                if(e.key === 'Enter'){
+                                    onSearchPressed(searchText)
+                                }
+                            }
+                        }}
+                        value={searchText}
+                        onChange={(event) => setSearchText(event.target.value)}
                     />
                 </div>
-                <RadioMarvel onChangeValue={() => {}}/>
+                <RadioMarvel onChangeValue={onRadioChange}/>
             </Toolbar>
         </AppBar>
     )
@@ -51,13 +63,13 @@ const useStyles = makeStyles(theme => ({
         width: theme.spacing(5),
         height: '100%',
         position: 'absolute',
-        pointerEvents: 'none',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         color: StyleConstants.whiteBackGround,
         backgroundColor: StyleConstants.marvelRed,
-        borderRadius: theme.shape.borderRadius
+        borderRadius: theme.shape.borderRadius,
+        zIndex: 999
     },
     inputRoot: {
         color: StyleConstants.darkFontColor,

@@ -16,20 +16,43 @@ export default function CharacterScreen() {
   const [offsetComics, setOffsetComics] = useState(0)
   const [hasMoreComics, setHasMoreComics] = useState(true)
   const [hasMoreCharacters, setHasMoreCharacters] = useState(true)
+  const [comicNameStartsWith, setComicNameStartsWith] = useState("")
+  const [characterNameStartsWith, setCharacterNameStartsWith] = useState("")
   const [typeOfData, setTypeOfData] = useState<"comic" | "character">("character")
   const classes = useStyles();
 
   useEffect(() => {
     if(typeResolver().offset > 0) {
-      getProjections({ offset: typeResolver().offset, limit: limit })
+      typeResolver().setHasMore(true)
+      getProjections({
+        offset: typeResolver().offset,
+        limit: limit, 
+        ...typeResolver().nameStartsWith 
+      })
     }
   }, [offsetComics, offsetCharacters])
 
   useEffect(() => {
     if(typeResolver().marvelProjections.length == 0){
-      getProjections({ offset: typeResolver().offset, limit: limit }, true)
-    } 
+      typeResolver().setOffset(0)
+      typeResolver().setHasMore(true)
+      getProjections({ 
+        offset: typeResolver().offset, 
+        limit: limit, 
+        ...typeResolver().nameStartsWith 
+      }, true)
+    }
   }, [typeOfData])
+
+  useEffect(() => {
+    typeResolver().setHasMore(true)
+    typeResolver().setOffset(0)
+    getProjections({ 
+      offset: typeResolver().offset, 
+      limit: limit, 
+      ...typeResolver().nameStartsWith 
+    }, true)
+  }, [comicNameStartsWith, characterNameStartsWith])
 
   const typeResolver = () => {
     return {
@@ -39,7 +62,9 @@ export default function CharacterScreen() {
       setHasMore: typeOfData === "character" ? setHasMoreCharacters: setHasMoreComics,
       marvelProjections: typeOfData === "character" ? characters: comics,
       setMarvelProjections: typeOfData === "character" ? setCharacters: SetComics,
-      service: typeOfData === "character" ? CharacterService.getCharacters: ComicService.getComics
+      service: typeOfData === "character" ? CharacterService.getCharacters: ComicService.getComics,
+      nameStartsWith: typeOfData === "character" ? { nameStartsWith: characterNameStartsWith } : { titleStartsWith: comicNameStartsWith },
+      setNameStartsWith: typeOfData === "character" ? setCharacterNameStartsWith : setComicNameStartsWith
     }
   }
 
@@ -56,17 +81,19 @@ export default function CharacterScreen() {
     })
   }
 
-  const reset = () => {
-    getProjections({ offset: typeResolver().offset, limit: limit }, true)
-  }
-
   return (
     <div id="HomeContainer">
-      <SearchBar/>
+      <SearchBar 
+        onRadioChange={ (value) => {
+          setTypeOfData(value === "character" ? "character" : "comic")
+          window.scrollTo(0, 0)
+        }}
+        onSearchPressed={(text) => typeResolver().setNameStartsWith(text)}
+      />
       <InfiniteScroll
           dataLength={typeResolver().marvelProjections.length}
           next={() => {
-            if (typeResolver().marvelProjections.length > 1) {
+            if (typeResolver().marvelProjections.length > 0) {
               typeResolver().setOffset(state => state + limit)
             }
           }}
@@ -86,10 +113,6 @@ export default function CharacterScreen() {
             </div>
           ))}
         </InfiniteScroll>
-        {/*<HomeBottom onChangeValue={(value) => {
-          setTypeOfData(value === "character" ? "character" : "comic")
-          window.scrollTo(0, 0)
-        }}/>*/}
     </div>
   )
 }

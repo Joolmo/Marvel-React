@@ -34,21 +34,19 @@ export default function RecipeReviewCard({thumbnail,
 
   return (
     <Card className={`${classes.card} ${!fullWidth ? classes.noFull : ""} ${!borderRadious ? classes.noBorderRadious : ""}`}>
+      <FavoriteIcon className={classes.favoriteIcon} style={{color: "#c1c1c1" /* isFav ?  StyleConstants.marvelRed : "#c1c1c1"*/}}/>
       <Link to={navigationPath} className={classes.link}>
         <CardMedia
           className={classes.cardMedia}
           image={`${thumbnail.path}.${thumbnail.extension}`}
         />
-      </Link>
-      <CardContent className={classes.cardContent}>
-        <Link to={navigationPath} className={classes.link}>
+        <CardContent className={classes.cardContent}>
           <Typography component="p" className={classes.typography}>
               {titleLabel}: {title}<br/>
               {contentLabel}: {id} 
           </Typography>
-        </Link>
-        <FavoriteIcon className={classes.favoriteIcon} style={{color: "#c1c1c1" /* isFav ?  StyleConstants.marvelRed : "#c1c1c1"*/}}/>
-      </CardContent>
+        </CardContent>
+      </Link>
     </Card>
   );
 }
@@ -59,11 +57,12 @@ const useStyles = makeStyles(theme => ({
   },
   card: {
     backgroundColor: StyleConstants.marvelRed,
-    margin: "auto"
+    margin: "auto",
+    position: "relative"
   },
   cardMedia: {
     height: 0,
-    paddingTop: '56.25%'
+    paddingTop: '56.25%',
   },
   cardContent: {
     display: "flex",
@@ -78,6 +77,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold"
   },
   favoriteIcon: {
+    position: "absolute",
+    top: 20,
+    right: 20,
+    zIndex: 999,
     backgroundColor: StyleConstants.whiteBackGround,
     borderRadius: "50%",
     padding: 7
